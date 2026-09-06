@@ -278,6 +278,32 @@
         });  
 	}
 
+
+
+	function generateRandomCode() {
+    	const numbers = Array.from({length: 8}, () => Math.floor(Math.random() * 10));
+    	const letters = Array.from({length: 2}, () => String.fromCharCode(65 + Math.floor(Math.random() * 26)));
+    	const allChars = [...numbers, ...letters];
+   
+    	// Shuffle the array
+    	for (let i = allChars.length - 1; i > 0; i--) {  
+        	const j = Math.floor(Math.random() * (i + 1));
+        	[allChars[i], allChars[j]] = [allChars[j], allChars[i]];
+    	}
+    	return allChars.join('');
+	}
+
+	// Check if a User Account has been created
+	if (localStorage.getItem('user')) {
+	    const code = localStorage.getItem('user');
+		toa(`ID: ${code} is Back`);
+	} else {
+		const code = generateRandomCode();
+	  	localStorage.setItem('user', code);
+		toa(`Yay! New Guy👑🥰🫂 ID: ${code}`);
+	}
+
+	
     const loginForm = document.getElementById("login-form");
 
     const loginScreen = document.getElementById("login-screen");
