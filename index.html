@@ -293,16 +293,6 @@
     	return allChars.join('');
 	}
 
-	// Check if a User Account has been created
-	if (localStorage.getItem('user')) {
-	    const code = localStorage.getItem('user');
-		toa(`ID: ${code} is Back`);
-	} else {
-		const code = generateRandomCode();
-	  	localStorage.setItem('user', code);
-		toa(`Yay! New Guy👑🥰🫂 ID: ${code}`);
-	}
-
 	
     const loginForm = document.getElementById("login-form");
 
